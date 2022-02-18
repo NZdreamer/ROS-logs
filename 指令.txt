@@ -1,0 +1,23 @@
+cd ~/ros_catkin_ws/src
+source devel/setup.bash
+
+scaled_pos_joint_traj_controller/follow_joint_trajectory
+
+roslaunch ur_robot_driver ur5e_bringup.launch robot_ip:=192.168.42.100
+
+roslaunch ur5_e_moveit_config ur5_e_moveit_planning_execution.launch
+
+roslaunch ur5_e_moveit_config moveit_rviz.launch config:=true
+
+
+roslaunch ur_calibration calibration_correction.launch   robot_ip:=192.168.2.128 target_filename:="${HOME}/my_ur10_robot_calibration.yaml"
+
+roslaunch ur_robot_driver ur10_bringup.launch robot_ip:=192.168.2.128 \ kinematics_config:=${HOME}/my_ur10_robot_calibration.yaml
+
+roslaunch ur10_moveit_config ur10_moveit_planning_execution.launch
+
+roslaunch ur10_moveit_config moveit_rviz.launch config:=true
+
+rosrun ur_driver test_move.py
+
+rosrun rqt_joint_trajectory_controller rqt_joint_trajectory_controller

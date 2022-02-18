@@ -1,0 +1,2 @@
+rostopic pub /scaled_pos_joint_traj_controller/command trajeory_msgs/JointTrajectory -r 1 -- '['0', '0', ""]' '[elbow_joint, shoulder_lift_joint, shoulder_pan_joint, wrist_1_joint, wrist_2_joint, wrist_3_joint]' '[{positions:[-1.7, -1.73, -0.6, -0.81, 1.6, -0.03]}, {velocities:[]},{accelerations:[]}, {effort:[]}, {time_from_start:[0,0]}]'
+
